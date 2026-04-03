@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Support The Informed Patient Project. Your donation helps create free patient-to-provider educational resources for under-recognized conditions. Donate via Ko-fi, PayPal, or Stripe.">
+  <title>Support Us — The Informed Patient Project</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .support-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 56px;
+    }
+    .donate-platform-card {
+      background: white;
+      border-radius: 18px;
+      border: 2px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: all var(--trans);
+      display: flex;
+      flex-direction: column;
+    }
+    .donate-platform-card:hover {
+      border-color: var(--teal-400);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .donate-platform-card.featured {
+      border-color: var(--teal-500);
+      box-shadow: 0 6px 24px rgba(43,140,133,0.18);
+    }
+    .donate-platform-header {
+      padding: 28px 24px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .platform-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    .platform-logo.kofi   { background: #fff0f0; color: #ff5e5b; }
+    .platform-logo.paypal { background: #eef3fd; color: #003087; font-size: 0.9rem; font-weight: 900; letter-spacing: -0.02em; }
+    .platform-logo.stripe { background: #f0efff; color: #635bff; }
+
+    .donate-platform-header h3 { font-size: 1.3rem; margin-bottom: 4px; }
+    .donate-platform-header p  { font-size: 0.875rem; color: var(--text-light); margin: 0; }
+
+    .donate-platform-body {
+      padding: 22px 24px;
+      flex: 1;
+    }
+    .donate-platform-body ul { list-style: none; }
+    .donate-platform-body ul li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0;
+      font-size: 0.875rem;
+      color: var(--text-medium);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .donate-platform-body ul li:last-child { border-bottom: none; }
+    .donate-platform-body ul li i { color: var(--teal-500); font-size: 0.8rem; }
+
+    .donate-platform-footer {
+      padding: 18px 24px 24px;
+    }
+    .donate-platform-footer .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      background: var(--teal-500);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .impact-item {
+      text-align: center;
+      padding: 24px 16px;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+    }
+    .impact-item .impact-emoji {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .impact-item h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .impact-item p  { font-size: 0.82rem; color: var(--text-light); margin: 0; }
+
+    .faq-item {
+      padding: 20px 24px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      margin-bottom: 12px;
+    }
+    .faq-item h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--teal-700);
+    }
+    .faq-item p { font-size: 0.9rem; margin: 0; }
+
+    @media (max-width: 800px) {
+      .support-layout { grid-template-columns: 1fr; }
+      .impact-grid     { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="The Informed Patient Project — Home">
+        <img src="assets/images/logo.png" alt="Informed Patient Project logo">
+        <div class="nav-logo-text">
+          <span class="nav-logo-title">The Informed Patient Project</span>
+          <span class="nav-logo-sub">Patient · Provider · Partnership</span>
+        </div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About</a>
+        <a href="suggest.html">Suggest a Condition</a>
+        <a href="support.html" class="btn btn-warm btn-sm">
+          <i class="fa-solid fa-heart"></i> Support Us
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ── Page Hero ──────────────────────────────────────── -->
+    <div class="page-hero">
+      <div class="container">
+        <span class="eyebrow" style="color:var(--amber-light)">Keep It Free For Everyone</span>
+        <h1>Support The Informed Patient Project</h1>
+        <p>Our resources are free for every patient who needs them — today, tomorrow, always. Donations help us create more.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- Framing message -->
+        <div class="section-header" style="margin-bottom:40px;">
+          <span class="eyebrow">Why We Ask</span>
+          <h2>Your support creates the next resource</h2>
+          <p>
+            Creating evidence-based, visually designed infographics takes significant time.
+            If a resource has helped you communicate more effectively with your provider —
+            or helped someone you love finally feel understood — your donation helps us do that
+            for the next person. And the one after that.
+          </p>
+          <p style="font-size:0.9rem; color:var(--teal-600);">
+            <i class="fa-solid fa-circle-check" style="color:var(--teal-500);"></i>
+            <strong>Access is never restricted.</strong> Whether you donate or not, every resource remains free.
+          </p>
+        </div>
+
+        <!-- ── Donation Platforms ──────────────────────────── -->
+        <div class="support-layout">
+
+          <!-- Ko-fi -->
+          <div class="donate-platform-card featured">
+            <div class="donate-platform-header">
+              <div class="featured-badge">Most Popular</div>
+              <div class="platform-logo kofi"><i class="fa-solid fa-mug-hot"></i></div>
+              <h3>Ko-fi</h3>
+              <p>One-time or monthly support</p>
+            </div>
+            <div class="donate-platform-body">
+              <ul>
+                <li><i class="fa-solid fa-check"></i> One-time donations from $3</li>
+                <li><i class="fa-solid fa-check"></i> Optional monthly support</li>
+                <li><i class="fa-solid fa-check"></i> No account required</li>
+                <li><i class="fa-solid fa-check"></i> Send a personal message</li>
+                <li><i class="fa-solid fa-check"></i> Simple &amp; trusted platform</li>
+              </ul>
+            </div>
+            <div class="donate-platform-footer">
+              <a href="https://ko-fi.com/informedpatientproject"
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn btn-primary">
+                <i class="fa-solid fa-mug-hot"></i> Support on Ko-fi
+              </a>
+            </div>
+          </div>
+
+          <!-- PayPal -->
+          <div class="donate-platform-card">
+            <div class="donate-platform-header">
+              <div class="platform-logo paypal">PayPal</div>
+              <h3>PayPal</h3>
+              <p>Quick &amp; secure payment</p>
+            </div>
+            <div class="donate-platform-body">
+              <ul>
+                <li><i class="fa-solid fa-check"></i> One-time donation</li>
+                <li><i class="fa-solid fa-check"></i> Pay with PayPal balance</li>
+                <li><i class="fa-solid fa-check"></i> Pay with credit/debit card</li>
+                <li><i class="fa-solid fa-check"></i> Trusted &amp; widely used</li>
+                <li><i class="fa-solid fa-check"></i> Choose your own amount</li>
+              </ul>
+            </div>
+            <div class="donate-platform-footer">
+              <!-- ⚠️  Replace YOUR_PAYPAL_BUTTON_ID with your actual PayPal donation button ID
+                   Create at paypal.com/donate/buttons -->
+              <a href="https://paypal.com/donate?hosted_button_id=YOUR_PAYPAL_BUTTON_ID"
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn btn-secondary">
+                <i class="fa-brands fa-paypal"></i> Donate via PayPal
+              </a>
+            </div>
+          </div>
+
+          <!-- Stripe -->
+          <div class="donate-platform-card">
+            <div class="donate-platform-header">
+              <div class="platform-logo stripe"><i class="fa-brands fa-stripe-s"></i></div>
+              <h3>Credit / Debit Card</h3>
+              <p>Secure card payment via Stripe</p>
+            </div>
+            <div class="donate-platform-body">
+              <ul>
+                <li><i class="fa-solid fa-check"></i> Visa, Mastercard, Amex</li>
+                <li><i class="fa-solid fa-check"></i> Apple Pay &amp; Google Pay</li>
+                <li><i class="fa-solid fa-check"></i> Bank-level security</li>
+                <li><i class="fa-solid fa-check"></i> No account required</li>
+                <li><i class="fa-solid fa-check"></i> Receipt emailed automatically</li>
+              </ul>
+            </div>
+            <div class="donate-platform-footer">
+              <!-- ⚠️  Replace YOUR_STRIPE_PAYMENT_LINK with your actual Stripe Payment Link URL
+                   Create at dashboard.stripe.com → Payment Links → Create Link -->
+              <a href="YOUR_STRIPE_PAYMENT_LINK"
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn btn-secondary">
+                <i class="fa-solid fa-credit-card"></i> Donate by Card
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── What Your Support Does ─────────────────────── -->
+        <div class="section-header">
+          <span class="eyebrow">Your Impact</span>
+          <h2>What support makes possible</h2>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-item">
+            <div class="impact-emoji">📋</div>
+            <h4>New Resources</h4>
+            <p>Each donation helps fund research and design for the next condition guide</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-emoji">🌍</div>
+            <h4>Language Access</h4>
+            <p>Working toward Spanish, French, and other language translations</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-emoji">🩺</div>
+            <h4>More Specialties</h4>
+            <p>Expanding coverage to cardiology, neurology, OB/GYN, and beyond</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-emoji">💛</div>
+            <h4>Free. Always.</h4>
+            <p>Your donation ensures the next patient never faces a paywall</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ Section ─────────────────────────────────────── -->
+    <section class="section section-alt" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Questions</span>
+          <h2 id="faq-heading">About supporting us</h2>
+        </div>
+        <div style="max-width: 700px; margin: 0 auto;">
+          <div class="faq-item reveal">
+            <h4>Are donations tax-deductible?</h4>
+            <p>The Informed Patient Project is currently an independent project and is not a registered 501(c)(3) nonprofit. Donations are not tax-deductible at this time. We are exploring nonprofit status as the project grows.</p>
+          </div>
+          <div class="faq-item reveal">
+            <h4>What if I can't donate?</h4>
+            <p>Please download every resource you need — they are free without exception. The best way to support without donating is to share our resources with others who might need them, or to suggest conditions that need guides.</p>
+          </div>
+          <div class="faq-item reveal">
+            <h4>Can I support with more than money?</h4>
+            <p>Yes! Sharing our resources within chronic illness communities, patient forums, and with providers who might use them is enormously valuable. You can also <a href="suggest.html">suggest conditions</a> to help shape our roadmap.</p>
+          </div>
+          <div class="faq-item reveal">
+            <h4>Will I get anything in return for donating?</h4>
+            <p>Our resources are already free for everyone — so there's no "donor exclusive" content. What you get is the knowledge that you helped create something that will be handed to a confused specialist by a patient who needs to be understood.</p>
+          </div>
+          <div class="faq-item reveal">
+            <h4>How are donations used?</h4>
+            <p>Donations fund research time, design work, website hosting, and the ongoing maintenance of existing resources. Every resource is reviewed and updated as medical guidelines evolve.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Other Ways to Help ─────────────────────────────── -->
+    <section class="section" aria-labelledby="other-help-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Other Ways to Help</span>
+          <h2 id="other-help-heading">It's not just about money</h2>
+        </div>
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="card-body">
+              <div style="font-size:2rem; margin-bottom:12px;">📣</div>
+              <h3>Share Our Resources</h3>
+              <p>Share our guides in chronic illness communities, patient forums, Facebook groups, Reddit, and Discord servers. Every share reaches someone who needs it.</p>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="card-body">
+              <div style="font-size:2rem; margin-bottom:12px;">💡</div>
+              <h3>Suggest a Condition</h3>
+              <p>Tell us what condition needs a guide. Your suggestion directly shapes what we create next. Multiple requests for the same condition move it to the top of the list.</p>
+              <a href="suggest.html" class="btn btn-secondary btn-sm mt-16">Suggest Now</a>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="card-body">
+              <div style="font-size:2rem; margin-bottom:12px;">📸</div>
+              <h3>Follow on Instagram</h3>
+              <p>Follow <strong>@informedpatientproject</strong> and share our posts when we launch new resources. Social reach helps us find the patients who need us most.</p>
+              <a href="https://instagram.com/informedpatientproject" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm mt-16">
+                <i class="fa-brands fa-instagram"></i> Follow Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/images/logo.png" alt="Informed Patient Project logo">
+            <span class="footer-logo-text">The Informed Patient Project</span>
+          </div>
+          <p>Patient-designed, evidence-based educational resources. Free for all who need them.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/informedpatientproject" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://ko-fi.com/informedpatientproject" target="_blank" rel="noopener noreferrer" aria-label="Ko-fi"><i class="fa-solid fa-mug-hot"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="resources.html">All Resources</a></li>
+            <li><a href="suggest.html">Suggest a Condition</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <ul>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="support.html">Support Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="license.html">License &amp; Usage</a></li>
+            <li><a href="license.html#disclaimer">Medical Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> The Informed Patient Project. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="license.html">License &amp; Usage</a>
+          <a href="license.html#disclaimer">Medical Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
