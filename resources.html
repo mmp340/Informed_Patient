@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse and download free patient-designed educational infographics for hEDS, POTS, MCAS, and other under-recognized conditions. All resources are free and evidence-based.">
+  <title>Free Resources — The Informed Patient Project</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .resources-intro {
+      max-width: 640px;
+      margin-bottom: 20px;
+    }
+    .resources-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .section-grid { margin-bottom: 64px; }
+    .section-grid h2 {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--teal-200);
+      margin-bottom: 24px;
+    }
+    .section-grid h2 i { color: var(--teal-500); margin-right: 8px; }
+    .coming-soon-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .suggest-cta-inline {
+      background: linear-gradient(135deg, var(--teal-50), var(--blue-50));
+      border: 1px solid var(--teal-200);
+      border-radius: var(--card-radius);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .suggest-cta-inline .cta-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+    .suggest-cta-inline h3 { margin-bottom: 6px; }
+    .suggest-cta-inline p  { font-size: 0.9rem; margin-bottom: 14px; }
+    .usage-note {
+      background: var(--warm-gray);
+      border-radius: 10px;
+      padding: 18px 22px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+    .usage-note i { color: var(--teal-500); margin-top: 2px; flex-shrink: 0; }
+    .usage-note p { font-size: 0.875rem; color: var(--text-medium); margin: 0; }
+    @media (max-width: 640px) {
+      .coming-soon-grid { grid-template-columns: 1fr; }
+      .suggest-cta-inline { flex-direction: column; text-align: center; }
+      .resources-header-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="The Informed Patient Project — Home">
+        <img src="assets/images/logo.png" alt="Informed Patient Project logo">
+        <div class="nav-logo-text">
+          <span class="nav-logo-title">The Informed Patient Project</span>
+          <span class="nav-logo-sub">Patient · Provider · Partnership</span>
+        </div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About</a>
+        <a href="suggest.html">Suggest a Condition</a>
+        <a href="support.html" class="btn btn-warm btn-sm">
+          <i class="fa-solid fa-heart"></i> Support Us
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ── Page Hero ──────────────────────────────────────── -->
+    <div class="page-hero">
+      <div class="container">
+        <span class="eyebrow" style="color:var(--amber-light)">Free Downloads</span>
+        <h1>Patient Education Resources</h1>
+        <p>Evidence-based infographics designed by patients, for providers. Free for anyone who needs them — always.</p>
+      </div>
+    </div>
+
+    <section class="section" id="main">
+      <div class="container">
+
+        <!-- Usage Note -->
+        <div class="usage-note">
+          <i class="fa-solid fa-circle-info"></i>
+          <p>
+            All resources are free to download for <strong>personal use</strong>. Each PDF includes watermarking and licensing language.
+            Resources may not be reproduced for mass distribution, sold, or modified.
+            <a href="license.html">View full license →</a>
+          </p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="resources-header-row">
+          <div>
+            <h2 style="font-size:1.1rem; border:none; padding:0; margin:0; color:var(--text-medium); font-family:var(--font-body); font-weight:400;">
+              Showing all resources
+            </h2>
+          </div>
+          <div class="filter-bar" role="group" aria-label="Filter resources">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="heds">hEDS / HSD</button>
+            <button class="filter-btn" data-filter="pots">POTS</button>
+            <button class="filter-btn" data-filter="mcas">MCAS</button>
+            <button class="filter-btn" data-filter="family">Family &amp; Friends</button>
+          </div>
+        </div>
+
+        <!-- ── hEDS Section ───────────────────────────────── -->
+        <div class="section-grid" id="heds">
+          <h2><i class="fa-solid fa-dna"></i> Hypermobile Ehlers-Danlos Syndrome (hEDS / HSD)</h2>
+          <div class="grid-3">
+
+            <article class="resource-card reveal" data-category="heds">
+              <div class="resource-card-body">
+                <div class="resource-tags">
+                  <span class="tag tag-teal">hEDS / HSD</span>
+                  <span class="tag tag-gray">Primary Care</span>
+                </div>
+                <h3>hEDS Primary Care Guide</h3>
+                <p>Comprehensive overview for PCPs. Covers systemic involvement, the hEDS trifecta (hEDS + POTS + MCAS), DO/DON'T/ORDER-REFER guidance, symptom tracking, and the Mankoski pain scale.</p>
+                <div class="resource-audience">
+                  <i class="fa-solid fa-user-doctor"></i>
+                  <span>For: Primary Care Physicians</span>
+                </div>
+              </div>
+              <div class="resource-card-footer">
+                <button class="download-btn"
+                  data-download="assets/pdfs/heds-primary-care.pdf"
+                  data-name="hEDS Primary Care Guide"
+                  data-filename="heds-primary-care.pdf">
+                  <i class="fa-solid fa-download"></i> Download Free
+                </button>
+                <span class="free-badge"><i class="fa-solid fa-lock-open"></i> Free</span>
+              </div>
+            </article>
+
+            <article class="resource-card coral-top reveal" data-category="heds mcas">
+              <div class="resource-card-body">
+                <div class="resource-tags">
+                  <span class="tag tag-teal">hEDS</span>
+                  <span class="tag tag-coral">MCAS</span>
+                  <span class="tag tag-gray">GI Specialist</span>
+                </div>
+                <h3>hEDS GI Specialist Guide</h3>
+                <p>Targeted for gastroenterologists. Covers GI manifestations, MCAS and histamine intolerance, dysmotility, common misdiagnoses, and GI-specific symptom tracking.</p>
+                <div class="resource-audience">
+                  <i class="fa-solid fa-user-doctor"></i>
+                  <span>For: Gastroenterologists</span>
+                </div>
+              </div>
+              <div class="resource-card-footer">
+                <button class="download-btn"
+                  data-download="assets/pdfs/heds-gi-specialist.pdf"
+                  data-name="hEDS GI Specialist Guide"
+                  data-filename="heds-gi-specialist.pdf">
+                  <i class="fa-solid fa-download"></i> Download Free
+                </button>
+                <span class="free-badge"><i class="fa-solid fa-lock-open"></i> Free</span>
+              </div>
+            </article>
+
+            <article class="resource-card amber-top reveal" data-category="heds family">
+              <div class="resource-card-body">
+                <div class="resource-tags">
+                  <span class="tag tag-teal">hEDS</span>
+                  <span class="tag tag-amber">Family &amp; Friends</span>
+                </div>
+                <h3>hEDS Family &amp; Friends Guide</h3>
+                <p>Accessible for loved ones. Covers what hEDS feels like, why it's invisible, how to be genuinely supportive, and what not to say.</p>
+                <div class="resource-audience">
+                  <i class="fa-solid fa-people-group"></i>
+                  <span>For: Family, Friends &amp; Loved Ones</span>
+                </div>
+              </div>
+              <div class="resource-card-footer">
+                <button class="download-btn"
+                  data-download="assets/pdfs/heds-family-friends.pdf"
+                  data-name="hEDS Family & Friends Guide"
+                  data-filename="heds-family-friends.pdf">
+                  <i class="fa-solid fa-download"></i> Download Free
+                </button>
+                <span class="free-badge"><i class="fa-solid fa-lock-open"></i> Free</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- ── Coming Soon ────────────────────────────────── -->
+        <div class="section-grid" id="coming-soon">
+          <h2><i class="fa-solid fa-clock"></i> Coming Soon</h2>
+          <div class="coming-soon-grid">
+
+            <div class="coming-soon-card" data-category="pots">
+              <i class="fa-solid fa-heart-pulse"></i>
+              <h3>POTS Cardiology Guide</h3>
+              <p>For cardiologists and electrophysiologists unfamiliar with Postural Orthostatic Tachycardia Syndrome.</p>
+              <a href="suggest.html" class="btn btn-secondary btn-sm">
+                <i class="fa-solid fa-bell"></i> Notify Me
+              </a>
+            </div>
+
+            <div class="coming-soon-card" data-category="mcas">
+              <i class="fa-solid fa-flask"></i>
+              <h3>MCAS Allergy/Immunology Guide</h3>
+              <p>Mast Cell Activation Syndrome for allergists and immunologists — testing, triggers, treatment protocols.</p>
+              <a href="suggest.html" class="btn btn-secondary btn-sm">
+                <i class="fa-solid fa-bell"></i> Notify Me
+              </a>
+            </div>
+
+            <div class="coming-soon-card">
+              <i class="fa-solid fa-brain"></i>
+              <h3>ME/CFS Neurology Guide</h3>
+              <p>Myalgic Encephalomyelitis/Chronic Fatigue Syndrome for neurologists — PEM, cognitive impact, pacing.</p>
+              <a href="suggest.html" class="btn btn-secondary btn-sm">
+                <i class="fa-solid fa-bell"></i> Notify Me
+              </a>
+            </div>
+
+            <div class="coming-soon-card">
+              <i class="fa-solid fa-bone"></i>
+              <h3>hEDS Orthopedic Guide</h3>
+              <p>For orthopedic surgeons and physical therapists — surgical precautions, PT protocols, joint hypermobility considerations.</p>
+              <a href="suggest.html" class="btn btn-secondary btn-sm">
+                <i class="fa-solid fa-bell"></i> Notify Me
+              </a>
+            </div>
+
+            <div class="coming-soon-card">
+              <i class="fa-solid fa-venus"></i>
+              <h3>hEDS OB/GYN Guide</h3>
+              <p>For OB/GYNs — hormonal cycling effects on symptoms, pregnancy considerations, and gynecological manifestations.</p>
+              <a href="suggest.html" class="btn btn-secondary btn-sm">
+                <i class="fa-solid fa-bell"></i> Notify Me
+              </a>
+            </div>
+
+            <div class="coming-soon-card">
+              <i class="fa-solid fa-hospital"></i>
+              <h3>Emergency Medicine Guide</h3>
+              <p>Critical information for ER providers treating patients with hEDS, POTS, and MCAS — medication sensitivities, crisis protocols.</p>
+              <a href="suggest.html" class="btn btn-secondary btn-sm">
+                <i class="fa-solid fa-bell"></i> Notify Me
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Suggest CTA ─────────────────────────────────── -->
+        <div class="suggest-cta-inline reveal">
+          <div class="cta-icon" aria-hidden="true">💡</div>
+          <div>
+            <h3>Don't see your condition?</h3>
+            <p>We're actively expanding. Every suggestion helps us prioritize the next resource. Tell us what condition needs a patient-to-provider guide.</p>
+            <a href="suggest.html" class="btn btn-primary">
+              <i class="fa-solid fa-lightbulb"></i> Suggest a Condition
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/images/logo.png" alt="Informed Patient Project logo">
+            <span class="footer-logo-text">The Informed Patient Project</span>
+          </div>
+          <p>Patient-designed, evidence-based educational resources. Free for all who need them.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/informedpatientproject" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://ko-fi.com/informedpatientproject" target="_blank" rel="noopener noreferrer" aria-label="Ko-fi">
+              <i class="fa-solid fa-mug-hot"></i>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="resources.html">All Resources</a></li>
+            <li><a href="resources.html#heds">hEDS / HSD</a></li>
+            <li><a href="resources.html#coming-soon">Coming Soon</a></li>
+            <li><a href="suggest.html">Suggest a Condition</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <ul>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="about.html#values">Core Values</a></li>
+            <li><a href="support.html">Support Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="license.html">License &amp; Usage</a></li>
+            <li><a href="license.html#disclaimer">Medical Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> The Informed Patient Project. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="license.html">License &amp; Usage</a>
+          <a href="license.html#disclaimer">Medical Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Download Modal ─────────────────────────────────── -->
+  <div class="modal-overlay" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" id="modalClose" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h3 id="modalTitle">Your download is ready 💛</h3>
+        <p>This resource is free — always. If it helps you, consider supporting the creation of more.</p>
+      </div>
+      <div class="modal-body">
+        <div class="modal-doc-name">
+          <i class="fa-solid fa-file-pdf"></i>
+          <span id="modalDocName">Resource</span>
+        </div>
+        <p style="font-size:0.875rem; color:var(--text-medium); margin-bottom:14px;">Support this work through any of these platforms:</p>
+        <div class="modal-donate-options">
+          <a href="https://ko-fi.com/informedpatientproject"
+             data-base-href="https://ko-fi.com/informedpatientproject"
+             class="modal-donate-btn" target="_blank" rel="noopener noreferrer">
+            <div class="platform-icon kofi"><i class="fa-solid fa-mug-hot"></i></div>
+            <div>
+              <strong>Ko-fi</strong>
+              <span style="display:block; font-size:0.78rem; font-weight:400; color:var(--text-light)">Buy me a coffee — one-time or monthly</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:auto; font-size:0.75rem; color:var(--text-light)"></i>
+          </a>
+          <a href="https://paypal.com/donate?hosted_button_id=YOUR_PAYPAL_BUTTON_ID"
+             data-base-href="https://paypal.com/donate?hosted_button_id=YOUR_PAYPAL_BUTTON_ID"
+             class="modal-donate-btn" target="_blank" rel="noopener noreferrer">
+            <div class="platform-icon paypal">PP</div>
+            <div>
+              <strong>PayPal</strong>
+              <span style="display:block; font-size:0.78rem; font-weight:400; color:var(--text-light)">Quick, secure one-time donation</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:auto; font-size:0.75rem; color:var(--text-light)"></i>
+          </a>
+          <a href="YOUR_STRIPE_PAYMENT_LINK"
+             data-base-href="YOUR_STRIPE_PAYMENT_LINK"
+             class="modal-donate-btn" target="_blank" rel="noopener noreferrer">
+            <div class="platform-icon stripe"><i class="fa-brands fa-stripe-s"></i></div>
+            <div>
+              <strong>Card / Stripe</strong>
+              <span style="display:block; font-size:0.78rem; font-weight:400; color:var(--text-light)">Donate by credit or debit card</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:auto; font-size:0.75rem; color:var(--text-light)"></i>
+          </a>
+        </div>
+        <div class="modal-divider">or</div>
+        <button class="modal-skip" id="modalSkipBtn">Download without donating →</button>
+        <p class="modal-license-note">
+          By downloading, you agree to our <a href="license.html">usage license</a>.
+          For personal use only. Not for reproduction, resale, or modification.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

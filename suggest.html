@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Suggest a condition for The Informed Patient Project. Help us create patient-to-provider educational resources for under-recognized and dismissed conditions.">
+  <title>Suggest a Condition — The Informed Patient Project</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .suggest-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+      align-items: start;
+    }
+    .sidebar-card {
+      background: white;
+      border-radius: var(--card-radius);
+      padding: 28px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 20px;
+    }
+    .sidebar-card h3 {
+      font-size: 1rem;
+      margin-bottom: 14px;
+      color: var(--teal-700);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-card h3 i { color: var(--teal-500); }
+    .sidebar-list li {
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 0.875rem;
+      color: var(--text-medium);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-list li:last-child { border-bottom: none; }
+    .sidebar-list li i { color: var(--teal-400); font-size: 0.8rem; }
+    .char-count {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      text-align: right;
+      margin-top: 4px;
+    }
+    @media (max-width: 840px) {
+      .suggest-layout {
+        grid-template-columns: 1fr;
+      }
+      .suggest-sidebar { order: -1; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="The Informed Patient Project — Home">
+        <img src="assets/images/logo.png" alt="Informed Patient Project logo">
+        <div class="nav-logo-text">
+          <span class="nav-logo-title">The Informed Patient Project</span>
+          <span class="nav-logo-sub">Patient · Provider · Partnership</span>
+        </div>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+        <a href="about.html">About</a>
+        <a href="suggest.html">Suggest a Condition</a>
+        <a href="support.html" class="btn btn-warm btn-sm">
+          <i class="fa-solid fa-heart"></i> Support Us
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ── Page Hero ──────────────────────────────────────── -->
+    <div class="page-hero">
+      <div class="container">
+        <span class="eyebrow" style="color:var(--amber-light)">Shape What We Build</span>
+        <h1>Suggest a Condition</h1>
+        <p>You know what's missing. Tell us, and help us create the resource that could change someone's next appointment.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="suggest-layout">
+
+          <!-- ── Form ─────────────────────────────────────── -->
+          <div>
+            <div class="info-box teal" style="margin-bottom: 28px;">
+              <i class="fa-solid fa-lightbulb"></i>
+              <p>Every suggestion is reviewed. We prioritize conditions with the longest diagnostic delays, the most medical dismissal, and the greatest need for provider education. <strong>Your voice shapes our roadmap.</strong></p>
+            </div>
+
+            <div class="form-card">
+              <!-- Success message (hidden until form submitted) -->
+              <div id="formSuccess" class="form-success">
+                <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h3>Thank you for your suggestion!</h3>
+                <p style="color:var(--text-medium);">We've received your submission and will review it carefully. Every suggestion helps us decide what to create next.</p>
+                <a href="resources.html" class="btn btn-primary mt-16">Browse Current Resources</a>
+              </div>
+
+              <!-- The form itself -->
+              <!-- ⚠️  REPLACE YOUR_FORMSPREE_ID below with your Formspree form ID
+                   Sign up free at formspree.io → create a form → copy the ID from the endpoint URL -->
+              <form id="suggestForm"
+                    action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+                    method="POST"
+                    novalidate>
+
+                <!-- Honeypot anti-spam -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+                <div class="form-group">
+                  <label for="condition">Condition name <span class="req">*</span></label>
+                  <input type="text" id="condition" name="condition" required
+                    placeholder="e.g., Fibromyalgia, ME/CFS, POTS, Mast Cell Activation Syndrome…"
+                    maxlength="120">
+                </div>
+
+                <div class="form-group">
+                  <label for="also_known_as">Also known as <span class="opt">(optional)</span></label>
+                  <input type="text" id="also_known_as" name="also_known_as"
+                    placeholder="Abbreviations, alternate names, or related conditions">
+                </div>
+
+                <div class="form-group">
+                  <label for="why_overlooked">Why is this condition often overlooked or dismissed? <span class="req">*</span></label>
+                  <textarea id="why_overlooked" name="why_overlooked" required
+                    placeholder="Describe the diagnostic challenges, why providers may dismiss symptoms, or common misdiagnoses…"
+                    maxlength="1500"
+                    oninput="document.getElementById('why_count').textContent = this.value.length + '/1500'"></textarea>
+                  <div class="char-count" id="why_count">0/1500</div>
+                </div>
+
+                <div class="form-group">
+                  <label>Which specialist types most need education about this condition? <span class="req">*</span></label>
+                  <div class="check-group">
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="primary_care"> Primary Care / Family Medicine
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="cardiology"> Cardiology
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="gastroenterology"> Gastroenterology
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="neurology"> Neurology
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="rheumatology"> Rheumatology
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="immunology"> Allergy / Immunology
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="obgyn"> OB/GYN
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="orthopedics"> Orthopedics / Physical Therapy
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="emergency"> Emergency Medicine
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="psychiatry"> Psychiatry / Psychology
+                    </label>
+                    <label class="check-item">
+                      <input type="checkbox" name="specialists" value="other"> Other (describe below)
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="personal_experience">Your experience with this condition <span class="opt">(optional)</span></label>
+                  <textarea id="personal_experience" name="personal_experience"
+                    placeholder="Share as much or as little as you'd like — your lived experience helps us understand what's missing from the current system…"
+                    maxlength="2000"
+                    oninput="document.getElementById('exp_count').textContent = this.value.length + '/2000'"></textarea>
+                  <div class="char-count" id="exp_count">0/2000</div>
+                  <p class="form-hint"><i class="fa-solid fa-lock" style="color:var(--text-light); font-size:0.75rem;"></i> Personal details are never published or shared. They help us understand the need.</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="key_resources">Key resources or research you're aware of <span class="opt">(optional)</span></label>
+                  <textarea id="key_resources" name="key_resources"
+                    placeholder="Links to studies, organization websites, published guidelines, or other patient advocacy groups for this condition…"
+                    rows="3"></textarea>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">Your email <span class="opt">(optional)</span></label>
+                    <input type="email" id="email" name="email"
+                      placeholder="If you'd like updates on this resource">
+                    <p class="form-hint">Never shared. Only used to notify you if we create a resource for this condition.</p>
+                  </div>
+                  <div class="form-group">
+                    <label for="how_found">How did you find us? <span class="opt">(optional)</span></label>
+                    <select id="how_found" name="how_found">
+                      <option value="">Select…</option>
+                      <option value="search">Search engine</option>
+                      <option value="instagram">Instagram</option>
+                      <option value="reddit">Reddit</option>
+                      <option value="friend">Friend or community member</option>
+                      <option value="provider">My healthcare provider</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="info-box amber" style="margin-bottom:24px;">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <p>Please do not include personal health information that you would not want others to see. While your submission is private, please do not include sensitive personal data like full name, address, or insurance information.</p>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+                  <i class="fa-solid fa-paper-plane"></i> Submit Suggestion
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- ── Sidebar ────────────────────────────────────── -->
+          <aside class="suggest-sidebar">
+            <div class="sidebar-card">
+              <h3><i class="fa-solid fa-clock-rotate-left"></i> Currently In Progress</h3>
+              <ul class="sidebar-list">
+                <li><i class="fa-solid fa-circle-dot"></i> POTS — Cardiology Guide</li>
+                <li><i class="fa-solid fa-circle-dot"></i> MCAS — Allergy/Immunology Guide</li>
+                <li><i class="fa-solid fa-circle-dot"></i> hEDS — Orthopedic Guide</li>
+                <li><i class="fa-solid fa-circle-dot"></i> ME/CFS — Neurology Guide</li>
+                <li><i class="fa-solid fa-circle-dot"></i> hEDS — OB/GYN Guide</li>
+                <li><i class="fa-solid fa-circle-dot"></i> Emergency Medicine Guide</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card">
+              <h3><i class="fa-solid fa-circle-question"></i> What makes a good suggestion?</h3>
+              <ul class="sidebar-list">
+                <li><i class="fa-solid fa-check"></i> Conditions with long diagnostic delays</li>
+                <li><i class="fa-solid fa-check"></i> Conditions frequently misdiagnosed</li>
+                <li><i class="fa-solid fa-check"></i> Conditions where providers lack awareness</li>
+                <li><i class="fa-solid fa-check"></i> Conditions with existing peer-reviewed research</li>
+                <li><i class="fa-solid fa-check"></i> Conditions affecting multiple organ systems</li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card" style="background:var(--teal-50); border-color:var(--teal-200);">
+              <h3><i class="fa-solid fa-hand-holding-heart"></i> Your impact</h3>
+              <p style="font-size:0.875rem; color:var(--text-medium); margin-bottom:14px;">
+                Suggestions directly influence our roadmap. When multiple patients request the same condition, it moves to the top of the list.
+              </p>
+              <a href="support.html" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">
+                <i class="fa-solid fa-heart"></i> Support This Work
+              </a>
+            </div>
+
+            <div class="sidebar-card">
+              <h3><i class="fa-brands fa-instagram"></i> Follow for Updates</h3>
+              <p style="font-size:0.875rem; color:var(--text-medium); margin-bottom:14px;">
+                Follow us on Instagram to be the first to know when new resources are released.
+              </p>
+              <a href="https://instagram.com/informedpatientproject"
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn btn-secondary btn-sm" style="width:100%; justify-content:center;">
+                @informedpatientproject
+              </a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/images/logo.png" alt="Informed Patient Project logo">
+            <span class="footer-logo-text">The Informed Patient Project</span>
+          </div>
+          <p>Patient-designed, evidence-based educational resources. Free for all who need them.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/informedpatientproject" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://ko-fi.com/informedpatientproject" target="_blank" rel="noopener noreferrer" aria-label="Ko-fi"><i class="fa-solid fa-mug-hot"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="resources.html">All Resources</a></li>
+            <li><a href="suggest.html">Suggest a Condition</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <ul>
+            <li><a href="about.html">Our Mission</a></li>
+            <li><a href="support.html">Support Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="license.html">License &amp; Usage</a></li>
+            <li><a href="license.html#disclaimer">Medical Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> The Informed Patient Project. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="license.html">License &amp; Usage</a>
+          <a href="license.html#disclaimer">Medical Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
