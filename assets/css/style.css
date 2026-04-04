@@ -436,13 +436,15 @@ strong { color: var(--text-dark); font-weight: 700; }
 }
 
 /* ── Page Hero (inner pages) ──────────────────────────────── */
+/* ── Page Hero (inner pages) ──────────────────────────────── */
 .page-hero {
-  background: linear-gradient(135deg, #2a0e0e 0%, #6b2830 100%);
+  background: linear-gradient(135deg, #f8f1e8 0%, #f8f1e8 100%);
   padding: 60px 0 56px;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
+
 .page-hero::before {
   content: '';
   position: absolute;
@@ -450,10 +452,27 @@ strong { color: var(--text-dark); font-weight: 700; }
   background: radial-gradient(ellipse at 70% 30%, rgba(255,222,128,0.28) 0%, transparent 60%);
   pointer-events: none;
 }
-.page-hero .container { position: relative; z-index: 1; }
-.page-hero h1 { color: white; margin-bottom: 14px; }
-.page-hero p  { color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 580px; margin: 0 auto; }
 
+.page-hero .container { 
+  position: relative; 
+  z-index: 1; 
+}
+
+.page-hero h1 { 
+  color: #d5586b; 
+  margin-bottom: 14px; 
+}
+
+.page-hero p { 
+  color: #d5586b; 
+  font-size: 1.1rem; 
+  max-width: 580px; 
+  margin: 0 auto; 
+}
+
+.page-hero .eyebrow {
+  color: #f68149 !important;
+}
 /* ── Cards ────────────────────────────────────────────────── */
 .card {
   background: white;
