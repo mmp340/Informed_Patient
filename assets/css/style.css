@@ -1773,3 +1773,4 @@ textarea { resize: vertical; min-height: 120px; }
     grid-template-columns: 1fr;
   }
 }
+/* Force redeploy - updated header colors */
