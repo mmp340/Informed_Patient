@@ -923,12 +923,12 @@ textarea { resize: vertical; min-height: 120px; }
 }
 
 .modal-header {
-  background: linear-gradient(135deg, #4d1e1a, #c66971);
+  background: linear-gradient(135deg, #f8f1e8, #f8f1e8);
   padding: 28px 32px 24px;
   position: relative;
 }
-.modal-header h3 { color: white; font-size: 1.4rem; margin-bottom: 6px; }
-.modal-header p  { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin: 0; }
+.modal-header h3 { color: #d5586b; font-size: 1.4rem; margin-bottom: 6px; }
+.modal-header p  { color: #d5586b; font-size: 0.9rem; margin: 0; }
 .modal-close {
   position: absolute;
   top: 16px;
