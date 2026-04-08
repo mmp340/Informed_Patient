@@ -62,6 +62,56 @@
     }
     .usage-note i { color: var(--teal-500); margin-top: 2px; flex-shrink: 0; }
     .usage-note p { font-size: 0.875rem; color: var(--text-medium); margin: 0; }
+
+    /* PDF preview */
+    .resource-card-preview {
+      display: none;
+      border-top: 1px solid var(--teal-100, #e0f2f1);
+      padding: 12px 16px 16px;
+      background: var(--warm-gray, #f8f7f4);
+    }
+    .preview-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .preview-label {
+      font-size: 0.75rem;
+      color: var(--text-medium);
+    }
+    .preview-open-link {
+      font-size: 0.75rem;
+      color: var(--teal-500);
+      text-decoration: none;
+    }
+    .preview-open-link:hover { text-decoration: underline; }
+    .pdf-embed {
+      width: 100%;
+      height: 480px;
+      border: 1px solid var(--teal-100, #e0f2f1);
+      border-radius: 6px;
+      display: block;
+      background: #fff;
+    }
+    .preview-btn {
+      background: transparent;
+      border: 1px solid var(--teal-200, #b2dfdb);
+      color: var(--teal-500);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .preview-btn:hover { background: var(--teal-50, #e0f2f1); }
+    .resource-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     @media (max-width: 640px) {
       .coming-soon-grid { grid-template-columns: 1fr; }
       .suggest-cta-inline { flex-direction: column; text-align: center; }
@@ -162,7 +212,20 @@
                   data-filename="heds-primary-care.pdf">
                   <i class="fa-solid fa-download"></i> Download Free
                 </button>
+                <button class="preview-btn"
+                  data-pdf="assets/pdfs/heds-primary-care.pdf"
+                  data-target="preview-heds-pc"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-eye"></i> Preview
+                </button>
                 <span class="free-badge"><i class="fa-solid fa-lock-open"></i> Free</span>
+              </div>
+              <div class="resource-card-preview" id="preview-heds-pc">
+                <div class="preview-bar">
+                  <span class="preview-label">PDF preview</span>
+                  <a class="preview-open-link" href="assets/pdfs/heds-primary-care.pdf" target="_blank" rel="noopener">Open in new tab <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i></a>
+                </div>
+                <iframe class="pdf-embed" title="hEDS Primary Care Guide preview"></iframe>
               </div>
             </article>
 
@@ -187,7 +250,20 @@
                   data-filename="heds-gi-specialist.pdf">
                   <i class="fa-solid fa-download"></i> Download Free
                 </button>
+                <button class="preview-btn"
+                  data-pdf="assets/pdfs/heds-gi-specialist.pdf"
+                  data-target="preview-heds-gi"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-eye"></i> Preview
+                </button>
                 <span class="free-badge"><i class="fa-solid fa-lock-open"></i> Free</span>
+              </div>
+              <div class="resource-card-preview" id="preview-heds-gi">
+                <div class="preview-bar">
+                  <span class="preview-label">PDF preview</span>
+                  <a class="preview-open-link" href="assets/pdfs/heds-gi-specialist.pdf" target="_blank" rel="noopener">Open in new tab <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i></a>
+                </div>
+                <iframe class="pdf-embed" title="hEDS GI Specialist Guide preview"></iframe>
               </div>
             </article>
 
@@ -211,7 +287,20 @@
                   data-filename="heds-family-friends.pdf">
                   <i class="fa-solid fa-download"></i> Download Free
                 </button>
+                <button class="preview-btn"
+                  data-pdf="assets/pdfs/heds-family-friends.pdf"
+                  data-target="preview-heds-ff"
+                  aria-expanded="false">
+                  <i class="fa-solid fa-eye"></i> Preview
+                </button>
                 <span class="free-badge"><i class="fa-solid fa-lock-open"></i> Free</span>
+              </div>
+              <div class="resource-card-preview" id="preview-heds-ff">
+                <div class="preview-bar">
+                  <span class="preview-label">PDF preview</span>
+                  <a class="preview-open-link" href="assets/pdfs/heds-family-friends.pdf" target="_blank" rel="noopener">Open in new tab <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i></a>
+                </div>
+                <iframe class="pdf-embed" title="hEDS Family and Friends Guide preview"></iframe>
               </div>
             </article>
 
@@ -411,5 +500,32 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="assets/js/main.js"></script>
+  <script>
+    // PDF preview toggle — loads iframe only on first open, clears on close
+    document.querySelectorAll('.preview-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var targetId = btn.getAttribute('data-target');
+        var pdfSrc   = btn.getAttribute('data-pdf');
+        var wrap     = document.getElementById(targetId);
+        var iframe   = wrap.querySelector('iframe');
+        var isOpen   = wrap.style.display === 'block';
+
+        if (isOpen) {
+          wrap.style.display = 'none';
+          iframe.src = '';
+          btn.innerHTML = '<i class="fa-solid fa-eye"></i> Preview';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          wrap.style.display = 'block';
+          if (!iframe.src || iframe.src === window.location.href) {
+            iframe.src = pdfSrc;
+          }
+          btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i> Close preview';
+          btn.setAttribute('aria-expanded', 'true');
+          wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
