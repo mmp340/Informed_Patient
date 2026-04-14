@@ -8,13 +8,11 @@
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script
-    src="https://www.paypal.com/sdk/js?client-id=BAAdmCWYf_kxkB32wb4yHZObc_2kqvKXJ88eWxAOlsO4RVPa_Ptmql1Fu55I_4Hi-MLk53Xibt5m9DsGA0&components=hosted-buttons&enable-funding=venmo&currency=USD">
-  </script>
   <style>
     .support-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
+      max-width: 400px;
       gap: 28px;
       margin-bottom: 56px;
       max-width: 780px;
@@ -370,11 +368,6 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script>
-    paypal.HostedButtons({
-      hostedButtonId: "SXXXXXXXXXXXXXXXXX",
-    }).render("#paypal-container-SXXXXXXXXXXXXXXXXX");
-  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
